@@ -38,7 +38,7 @@ def inject_logged_in():
 
 @app.route('/')
 def home():
-    return render_template('home.html', past_posts=posts_to_html())
+    return render_template('home.html', past_posts = posts_to_html())
 
 @app.route('/posted', methods=['POST'])
 def post():
@@ -52,11 +52,12 @@ def post():
     return render_template('home.html', past_posts = posts_to_html())
 
 def posts_to_html():
-    option = ""
-    for key, value in data:
-        option += Markup('<p>' + str(key) + '\n' + str(value) + '</p>')
-    
-    return option
+    try:
+        for key, value in data:
+            option += Markup('<p>' + str(key) + '\n' + str(value) + '</p>')
+        return options    
+    except:
+        return None
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
