@@ -53,7 +53,7 @@ def post():
 
 def posts_to_html():
     for key, value in data:
-        option += Markup('<p>' + str(key) + '\n' + str(value) '</p>')
+        option += Markup('<p>' + str(key) + '\n' + str(value) + '</p>')
     
     return option
 
