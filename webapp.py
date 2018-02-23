@@ -30,8 +30,8 @@ github = oauth.remote_app(
 #Create and set a global variable for the name of you JSON file here.  The file will be created on Heroku, so you don't need to make it in GitHub
 
 os.system("echo '[]' > " + 'data.json')
-with open('data.json', 'r+') as fp:
-    data = json.load(fp)
+fp = open('data.json', 'r+')
+data = json.load(fp)
 
 @app.context_processor
 def inject_logged_in():
