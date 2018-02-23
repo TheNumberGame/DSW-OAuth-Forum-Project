@@ -45,7 +45,7 @@ def post():
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
     #Every post should include the username of the poster and text of the post.
     
-    data[session['user_data']['login']] =  request.form['message']
+    data.append.(session['user_data']['login'] + '\n' + request.form['message'])
     
     json.dump(data, 'data.json')
     
@@ -53,8 +53,8 @@ def post():
 
 def posts_to_html():
     try:
-        for key, value in data:
-            option += Markup('<p>' + str(key) + '\n' + str(value) + '</p>')
+        for i in data:
+            option += Markup('<p>' + i + '</p>')
         return options    
     except:
         return ""
