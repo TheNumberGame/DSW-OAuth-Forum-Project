@@ -53,9 +53,9 @@ def post():
     fp.truncate(0)
     json.dump(data, fp)
     
-    return render_template('home.html', past_posts = posts_to_html())
+    return render_template('home.html', past_posts = posts_to_html(data))
 
-def posts_to_html():
+def posts_to_html(data = None):
     option = ""
     try:
         for i in data:
