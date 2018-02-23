@@ -12,6 +12,8 @@
     <br>
     <input type="submit" value="Post">
   </form>
+{%  else %}
+  <p>You must be logged in to post.</p>
 {% endif %}
   {{ past_posts }}
 
