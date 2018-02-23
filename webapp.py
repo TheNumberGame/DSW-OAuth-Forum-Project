@@ -50,6 +50,7 @@ def post():
         data = json.load(fp)
     except:
         print(fp)
+        data = []
         
     data.append(session['user_data']['login'] + ': ' + request.form['message'])
     
