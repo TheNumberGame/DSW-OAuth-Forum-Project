@@ -47,9 +47,9 @@ def post():
     #Every post should include the username of the poster and text of the post.
     
     try:
-        data = json.load(str(fp))
+        data = json.load(fp)
     except Exception as e:
-        print(fp, e, type(fp))
+        print(fp, e)
         data = []
         
         
