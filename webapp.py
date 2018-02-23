@@ -45,7 +45,7 @@ def post():
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
     #Every post should include the username of the poster and text of the post.
     
-    data[session['github_token']] =  request.form[message]
+    data[session['user_data']['login']] =  request.form[message]
     
     json.dump(data, 'data.json')
     
@@ -57,7 +57,7 @@ def posts_to_html():
             option += Markup('<p>' + str(key) + '\n' + str(value) + '</p>')
         return options    
     except:
-        return None
+        return ""
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
