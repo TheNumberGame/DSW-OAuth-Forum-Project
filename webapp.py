@@ -46,8 +46,8 @@ def post():
     #Every post should include the username of the poster and text of the post.
     
     data.append(session['user_data']['login'] + '\n' + request.form['message'])
-    
-    json.dump(data, 'data.json')
+    with open('data.json', 'w') as fp:
+        json.dump(data, fp)
     
     return render_template('home.html', past_posts = posts_to_html())
 
