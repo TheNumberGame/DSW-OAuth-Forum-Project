@@ -56,9 +56,10 @@ def posts_to_html():
     try:
         for i in data:
             option += Markup('<p>' + str(i) + '</p>')
-        return options    
     except Exception as e:
         return str(e)
+    
+    return options    
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
