@@ -49,8 +49,9 @@ def post():
     try:
         data = json.load(str(fp))
     except Exception as e:
-        print(fp, e)
+        print(fp, e, type(fp))
         data = []
+        
         
     data.append(session['user_data']['login'] + ': ' + request.form['message'])
     
