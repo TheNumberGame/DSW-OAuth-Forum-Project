@@ -48,8 +48,8 @@ def post():
     
     try:
         data = json.load(fp)
-    except:
-        print(fp)
+    except Exception as e:
+        print(fp, e)
         data = []
         
     data.append(session['user_data']['login'] + ': ' + request.form['message'])
