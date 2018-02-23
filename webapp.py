@@ -52,6 +52,7 @@ def post():
     return render_template('home.html', past_posts = posts_to_html())
 
 def posts_to_html():
+    option = ""
     try:
         for i in data:
             option += Markup('<p>' + str(i) + '</p>')
