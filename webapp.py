@@ -59,7 +59,7 @@ def posts_to_html():
     except Exception as e:
         return str(e)
     
-    return options    
+    return option    
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
