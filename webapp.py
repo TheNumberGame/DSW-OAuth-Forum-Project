@@ -48,6 +48,8 @@ def post():
     
     data.append(session['user_data']['login'] + '\n' + request.form['message'])
     
+    print(data)
+    
     fp.truncate(0)
     json.dump(data, fp)
     
