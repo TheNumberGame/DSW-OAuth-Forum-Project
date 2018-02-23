@@ -31,7 +31,7 @@ github = oauth.remote_app(
 
 os.system("echo '[]' > " + 'data.json')
 fp = open('data.json', 'r+')
-data = json.load(fp)
+#data = json.load(fp)
 
 @app.context_processor
 def inject_logged_in():
@@ -45,7 +45,7 @@ def home():
 def post():
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
     #Every post should include the username of the poster and text of the post.
-    
+    data = json.load(fp)
     data.append(session['user_data']['login'] + '\n' + request.form['message'])
     
     print(data)
