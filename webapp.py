@@ -51,6 +51,8 @@ def post():
         
     if not request.form['message'] == "" and not request.form['message'].isspace() and len(request.form['message']) < 1000:
         data.insert( 0, session['user_data']['login'] + ': ' + request.form['message'])
+    else:
+        return render_template('home.html', past_posts = posts_to_html("Less than 1000 characters please."))
     
     fp.seek(0)
     fp.truncate()
