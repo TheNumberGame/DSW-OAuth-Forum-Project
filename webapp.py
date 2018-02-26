@@ -46,17 +46,11 @@ def post():
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
     #Every post should include the username of the poster and text of the post.
     fp = open('data.json', 'r+')
-    
-    try:
-        data = json.load(fp)
-    except Exception as e:
-        print(fp, e)
-        data = []
+   
+    data = json.load(fp)
         
     if not request.form['message'] == "":
         data.insert( 0, session['user_data']['login'] + ': ' + request.form['message'])
-    
-    print(data)
     
     fp.seek(0)
     fp.truncate()
