@@ -49,7 +49,7 @@ def post():
    
     data = json.load(fp)
         
-    if not request.form['message'] == "":
+    if not request.form['message'] == "" and not request.form['message'].isspace():
         data.insert( 0, session['user_data']['login'] + ': ' + request.form['message'])
     
     fp.seek(0)
