@@ -8,7 +8,7 @@ import json
 
 app = Flask(__name__)
 
-app.debug = True #Change this to False for production
+app.debug = False #Change this to False for production
 
 app.secret_key = os.environ['SECRET_KEY'] #used to sign session cookies
 oauth = OAuth(app)
@@ -49,7 +49,7 @@ def post():
    
     data = json.load(fp)
         
-    if not request.form['message'] == "" and not request.form['message'].isspace():
+    if not request.form['message'] == "" and not request.form['message'].isspace() and len(request.form['message']) < 1000:
         data.insert( 0, session['user_data']['login'] + ': ' + request.form['message'])
     
     fp.seek(0)
