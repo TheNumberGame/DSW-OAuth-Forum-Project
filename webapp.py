@@ -57,6 +57,7 @@ def post():
     
     print(data)
     
+    fp.seek(0)
     fp.truncate(0)
     json.dump(data, fp)
     
