@@ -58,7 +58,7 @@ def post():
     print(data)
     
     fp.seek(0)
-    fp.truncate(0)
+    fp.truncate()
     json.dump(data, fp)
     
     return render_template('home.html', past_posts = posts_to_html(data))
