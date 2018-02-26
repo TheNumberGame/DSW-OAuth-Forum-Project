@@ -53,8 +53,8 @@ def post():
         print(fp, e)
         data = []
         
-        
-    data.insert( 0, session['user_data']['login'] + ': ' + request.form['message'])
+    if not request.form['message'] == "":
+        data.insert( 0, session['user_data']['login'] + ': ' + request.form['message'])
     
     print(data)
     
