@@ -54,7 +54,7 @@ def post():
         data = []
         
         
-    data.append(session['user_data']['login'] + ': ' + request.form['message'])
+    data.insert( 0, session['user_data']['login'] + ': ' + request.form['message'])
     
     print(data)
     
