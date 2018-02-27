@@ -63,12 +63,25 @@ def post():
 def posts_to_html(data = None):
     option = ""
     try:
-        for i in data:
-            option += Markup("<p>" + str(i) + "</p>")
+        for i in data:  
+            option += Markup("<p>" + correct_spacing(i) + "</p>")
     except:
         return ""
     
     return option    
+
+def correct_spacing(dataStr = "")
+    option = []
+    
+    if len(dataStr) > 100:
+        for i in dataStr:
+            if i.isspace():
+                option.append('\n')
+            option.append(i)          
+        return option.join(option)
+    
+    return dataStr
+    
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
