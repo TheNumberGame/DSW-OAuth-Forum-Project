@@ -70,7 +70,7 @@ def posts_to_html(data = None):
     
     return option    
 
-def correct_spacing(dataStr = "")
+def correct_spacing(dataStr = ""):
     option = []
     
     if len(dataStr) > 100:
