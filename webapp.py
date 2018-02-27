@@ -77,8 +77,9 @@ def correct_spacing(dataStr = ""):
         for i in dataStr:
             if i.isspace():
                 option.append('\n')
-            option.append(i)          
-        return option.join(option)
+            else:
+                option.append(i)          
+        return ''.join(option)
     
     return dataStr
     
