@@ -70,13 +70,13 @@ def posts_to_html(data = None):
     
     return option    
 
-def correct_spacing(dataStr = ""):
+def correct_spacing(dataStr = " "):
     option = []
     
     if len(dataStr) > 100:
         for i in dataStr:
             if i.isspace():
-                option.append('\n')
+                option.append("\n")
             else:
                 option.append(i)          
         return ''.join(option)
