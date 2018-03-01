@@ -49,10 +49,10 @@ def post():
    
     data = json.load(fp)
         
-    if not request.form['message'] == "" and not request.form['message'].isspace() and len(request.form['message']) < 1000:
+    if not request.form['message'] == "" and not request.form['message'].isspace():
         data.insert( 0, session['user_data']['login'] + ': ' + request.form['message'])
     else:
-        return render_template('home.html', past_posts = posts_to_html(['Less than 1000 characters.']))
+        return render_template('home.html', past_posts = posts_to_html(['Invalid']))
     
     fp.seek(0)
     fp.truncate()
