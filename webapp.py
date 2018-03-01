@@ -50,7 +50,7 @@ def post():
     data = json.load(fp)
         
     if not request.form['message'] == "" and not request.form['message'].isspace():
-        data.insert( 0, session['user_data']['login'] + ': ' + request.form['message'])
+        data.insert( 0, session['user_data']['login'] + ': \n' + request.form['message'])
     else:
         return render_template('home.html', past_posts = posts_to_html(['Invalid']))
     
