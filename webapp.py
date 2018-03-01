@@ -64,7 +64,7 @@ def posts_to_html(data = None):
     option = ""
     try:
         for i in data:  
-            option += Markup("<p>" + str(i) + "</p>")
+            option += Markup("<p id=\"talk\">" + str(i) + "</p>")
     except:
         return ""
     
