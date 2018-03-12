@@ -5,6 +5,7 @@ from flask import render_template
 import pprint
 import os
 import json
+import pymongo
 
 app = Flask(__name__)
 
@@ -12,6 +13,8 @@ app.debug = False #Change this to False for production
 
 app.secret_key = os.environ['SECRET_KEY'] #used to sign session cookies
 oauth = OAuth(app)
+
+
 
 #Set up GitHub as OAuth provider
 github = oauth.remote_app(
