@@ -57,21 +57,17 @@ def home():
 @app.route('/posted', methods=['POST'])
 def post():
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
-    #Every post should include the username of the poster and text of the post.
-    fp = open('data.json', 'r+')
-   
-    data = json.load(fp)
-        
+    #Every post should include the username of the poster and text of the post.    
+
     if not request.form['message'] == "" and not request.form['message'].isspace():
-        data.insert( 0, session['user_data']['login'] + ': ' + request.form['message'])
+        data = session['user_data']['login'] + ': ' + request.form['message']
     else:
         return render_template('home.html', past_posts = posts_to_html(['Invalid']))
     
-    fp.seek(0)
-    fp.truncate()
-    json.dump(data, fp)
     
-    return render_template('home.html', past_posts = posts_to_html(data))
+    collection.insert_one(data)
+    
+    return render_template('home.html', past_posts = posts_to_html(collection.read()))
 
 def posts_to_html(data = None):
     option = ""
