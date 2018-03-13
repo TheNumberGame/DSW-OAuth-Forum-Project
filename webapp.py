@@ -58,7 +58,7 @@ def post():
     #Every post should include the username of the poster and text of the post.    
 
     if not request.form['message'] == "" and not request.form['message'].isspace():
-        data = session['user_data']['login'] + ': ' + request.form['message']
+        data = { "name": session['user_data']['login'], "message": request.form['message']}
     else:
         return render_template('home.html', past_posts = posts_to_html(['Invalid']))
     
@@ -71,7 +71,7 @@ def posts_to_html(data = None):
     option = ""
     try:
         for i in data:  
-            option += Markup("<p id=\"talk\">" + i + "</p>")
+            option += Markup("<p id=\"talk\">" + i[name] + ": " + i[message] + "</p>")
     except:
         return ""
     
