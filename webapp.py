@@ -50,7 +50,7 @@ def inject_logged_in():
 @app.route('/')
 def home():
     
-    return render_template('home.html', past_posts = posts_to_html(collection.read()))
+    return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
 @app.route('/posted', methods=['POST'])
 def post():
@@ -65,7 +65,7 @@ def post():
     
     collection.insert_one(data)
     
-    return render_template('home.html', past_posts = posts_to_html(collection.read()))
+    return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
 def posts_to_html(data = None):
     option = ""
