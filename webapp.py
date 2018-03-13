@@ -21,7 +21,7 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
         os.environ["MONGO_PORT"],
         os.environ["MONGO_DBNAME"])
 
-collection = pymongo.MongoClient(url)[os.environ["MONGO_USERNAME"]]['forum'] 
+collection = pymongo.MongoClient(url)['forum'] #[os.environ["MONGO_USERNAME"]]
 
 print(collection)
 
