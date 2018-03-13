@@ -23,7 +23,7 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
 
 collection = pymongo.MongoClient(url)[os.environ["MONGO_USERNAME"]]['forum']
 
-print(collection)
+#print(collection)
 
 #Set up GitHub as OAuth provider
 github = oauth.remote_app(
@@ -51,7 +51,7 @@ def inject_logged_in():
 
 @app.route('/')
 def home():
-    
+    print(collection.find())
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
 @app.route('/posted', methods=['POST'])
