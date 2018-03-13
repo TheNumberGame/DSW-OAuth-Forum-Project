@@ -21,7 +21,7 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
         os.environ["MONGO_PORT"],
         os.environ["MONGO_DBNAME"])
 
-collection = pymongo.MongoClient(url)['forum'] #[os.environ["MONGO_USERNAME"]]
+collection = pymongo.MongoClient(url)[os.environ["MONGO_USERNAME"]]['forum'] 
 
 print(collection)
 
@@ -65,7 +65,7 @@ def post():
         return render_template('home.html', past_posts = posts_to_html(['Invalid']))
     
     
-    collection.insert_one(data)
+    collection.insert(data)
     
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
