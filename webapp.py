@@ -21,7 +21,9 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
         os.environ["MONGO_PORT"],
         os.environ["MONGO_DBNAME"])
 
-collection = pymongo.MongoClient(url)[os.environ["MONGO_USERNAME"]]['forum']
+client = pymongo.MongoClient(url)
+client.grantRolesToUser(os.environ["MONGO_USERNAME"], { role: "root", db: os.environ["MONGO_DBNAME"]})
+collection = client[os.environ["MONGO_USERNAME"]]['forum']
 
 
 #Set up GitHub as OAuth provider
