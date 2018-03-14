@@ -51,7 +51,7 @@ def inject_logged_in():
 
 @app.route('/')
 def home():
-    print("Collection find: " + str(collection.find()))
+    #print("Collection find: " + str(collection.find()))
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
 @app.route('/posted', methods=['POST'])
@@ -72,7 +72,8 @@ def post():
 def posts_to_html(data = None):
     option = ""
     try:
-        for i in data:  
+        for i in data: 
+            print(i)
             option += Markup("<p id=\"talk\">" + i[name] + ": " + i[message] + "</p>")
     except:
         return ""
