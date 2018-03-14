@@ -21,7 +21,6 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
         os.environ["MONGO_PORT"],
         os.environ["MONGO_DBNAME"])
 
-print(str(url))
 clt = pymongo.MongoClient(url)
 usr = clt[os.environ["MONGO_DBNAME"]]
 collection = usr['forum']
@@ -68,9 +67,11 @@ def post():
 
 def posts_to_html(data = None):
     option = ""
+    lst = [];
     try:
-        for i in data.reverse(): 
-            print("Value of i" + str(i))
+        for i in data:
+            lst.append(i)
+        for i in lst.reverse(): 
             option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>")
     except Exception as ex:
         return str(ex)
