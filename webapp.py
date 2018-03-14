@@ -23,7 +23,7 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
 
 print(str(url))
 clt = pymongo.MongoClient(url)
-usr = client[os.environ["MONGO_USERNAME"]]
+usr = clt[os.environ["MONGO_DBNAME"]]
 #clt.grantRolesToUser(os.environ["MONGO_USERNAME"], { 'role': "root", 'db': os.environ["MONGO_DBNAME"]})
 collection = usr['forum']
 
