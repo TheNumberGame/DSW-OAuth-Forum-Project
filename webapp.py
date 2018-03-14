@@ -75,8 +75,8 @@ def posts_to_html(data = None):
         for i in data: 
             print("Value of i" + str(i))
             option += Markup("<p id=\"talk\">" + i[name] + ": " + i[message] + "</p>")
-    except:
-        return ""
+    except Exception as ex:
+        return str(ex)
     
     return option    
     
