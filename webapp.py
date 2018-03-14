@@ -67,11 +67,8 @@ def post():
 
 def posts_to_html(data = None):
     option = ""
-    lst = []
     try:
-        for i in data:
-            lst.append(i)
-        for i in lst.reverse(): 
+        for i in data: 
             option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>")
     except Exception as ex:
         return str(ex)
