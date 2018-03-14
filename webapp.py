@@ -24,7 +24,6 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
 print(str(url))
 clt = pymongo.MongoClient(url)
 usr = clt[os.environ["MONGO_DBNAME"]]
-#clt.grantRolesToUser(os.environ["MONGO_USERNAME"], { 'role': "root", 'db': os.environ["MONGO_DBNAME"]})
 collection = usr['forum']
 
 
@@ -43,10 +42,6 @@ github = oauth.remote_app(
 
 #use a JSON file to store the past posts.  A global list variable doesn't work when handling multiple requests coming in and being handled on different threads
 #Create and set a global variable for the name of you JSON file here.  The file will be created on Heroku, so you don't need to make it in GitHub
-
-os.system("echo '[]' > " + 'data.json')
-#fp = open('data.json', 'r+')
-#data = json.load(fp)
 
 @app.context_processor
 def inject_logged_in():
@@ -67,7 +62,6 @@ def post():
     else:
         return render_template('home.html', past_posts = posts_to_html(['Invalid']))
     
-    
     collection.insert(data)
     
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
@@ -75,7 +69,7 @@ def post():
 def posts_to_html(data = None):
     option = ""
     try:
-        for i in data: 
+        for i in data.reverse(): 
             print("Value of i" + str(i))
             option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>")
     except Exception as ex:
