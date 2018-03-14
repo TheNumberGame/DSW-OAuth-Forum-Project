@@ -67,7 +67,7 @@ def post():
 
 def posts_to_html(data = None):
     option = ""
-    lst = [];
+    lst = []
     try:
         for i in data:
             lst.append(i)
