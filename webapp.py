@@ -23,7 +23,7 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
 
 collection = pymongo.MongoClient(url)[os.environ["MONGO_USERNAME"]]['forum']
 
-print(pymongo.MongoClient(url)[os.environ["MONGO_USERNAME"]])
+print(pymongo.MongoClient(url).getUser(os.environ["MONGO_USERNAME"]))
 
 #Set up GitHub as OAuth provider
 github = oauth.remote_app(
