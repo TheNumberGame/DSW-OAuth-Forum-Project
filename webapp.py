@@ -78,7 +78,7 @@ def posts_to_html(data = None):
 def delPost(name = None, id = None):
     if name == session["user_data"]["login"] and not id == None:
          collection.deleteOne({'_id': ObjectId(id)})
-    else
+    else:
          return render_template('home.html', past_posts = posts_to_html("Failed to delete."))
 
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
