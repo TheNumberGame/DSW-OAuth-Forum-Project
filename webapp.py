@@ -67,11 +67,11 @@ def post():
 
 def posts_to_html(data = None):
      option = ""
-     #try:
-     for i in data.sort([("date", -1)]): 
-          option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>"+ "<button type=\"button\" onclick= \{\{ delPost("+str(session['user_data']['login'])+"," + str(i["id"]) +") \}\} > Delete Post</button>")
-     #except Exception as ex:
-          #return str(ex)
+     try:
+          for i in data.sort([("date", -1)]): 
+               option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>"+ "<button type=\"button\" onclick= \{\{ delPost("+str(session['user_data']['login'])+"," + str(i["_id"]) +") \}\} > Delete Post</button>")
+     except Exception as ex:
+          return str(ex)
      return option    
     
 def delPost(name = None, id = None):
