@@ -23,8 +23,7 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
         os.environ["MONGO_HOST"],
         os.environ["MONGO_PORT"],
         os.environ["MONGO_DBNAME"])
-
-clt = pymongo.MongoClient(url)
+,clt = pymongo.MongoClient(url)
 usr = clt[os.environ["MONGO_DBNAME"]]
 collection = usr['forum']
 
