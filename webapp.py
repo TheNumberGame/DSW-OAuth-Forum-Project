@@ -75,7 +75,7 @@ def posts_to_html(data = None):
      return option    
     
 def delPost(name = None, id = None):
-    print("Called: "+ id)
+    print("Called: "+ str(id))
     if name == session["user_data"]["login"] and not id == None:
          collection.deleteOne({'_id': ObjectId(id)})
     else:
