@@ -29,8 +29,7 @@ collection = usr['forum']
 
 #Set up GitHub as OAuth provider
 github = oauth.remote_app(
-    'github',
-    consumer_key=os.environ['GITHUB_CLIENT_ID'], #your web app's "username" for github's OAuth
+    'github', consumer_key=os.environ['GITHUB_CLIENT_ID'], #your web app's "username" for github's OAuth
     consumer_secret=os.environ['GITHUB_CLIENT_SECRET'],#your web app's "password" for github's OAuth
     request_token_params={'scope': 'user:email'}, #request read-only access to the user's email.  For a list of possible scopes, see developer.github.com/apps/building-oauth-apps/scopes-for-oauth-apps
     base_url='https://api.github.com/',
@@ -69,7 +68,7 @@ def post():
 def posts_to_html(data = None):
     option = ""
     try:
-        for i in data.sort({"date", -1}): 
+        for i in data.sort([("date", -1)]): 
             option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>")
     except Exception as ex:
         return str(ex)
