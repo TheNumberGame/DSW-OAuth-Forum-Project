@@ -1,3 +1,5 @@
+
+
 from flask import Flask, redirect, url_for, session, request, jsonify, Markup
 from flask_oauthlib.client import OAuth
 from flask import render_template
@@ -6,7 +8,7 @@ import pprint
 import os
 import json
 import pymongo
-import datetime
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -25,7 +27,6 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
 clt = pymongo.MongoClient(url)
 usr = clt[os.environ["MONGO_DBNAME"]]
 collection = usr['forum']
-
 
 #Set up GitHub as OAuth provider
 github = oauth.remote_app(
@@ -58,7 +59,7 @@ def post():
     #Every post should include the username of the poster and text of the post.    
 
     if not request.form['message'] == "" and not request.form['message'].isspace():
-        data = { "name": session['user_data']['login'], "message": request.form['message']}
+        data = { "name": session['user_data']['login'], "message": request.form['message'], "date": str(datetime.now())}
     else:
         return render_template('home.html', past_posts = posts_to_html(['Invalid']))
     
@@ -69,7 +70,7 @@ def post():
 def posts_to_html(data = None):
     option = ""
     try:
-        for i in data: 
+        for i in data.sort({"date": -1}): 
             option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>")
     except Exception as ex:
         return str(ex)
