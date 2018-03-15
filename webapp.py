@@ -66,14 +66,13 @@ def post():
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
 def posts_to_html(data = None):
-    option = ""
-    try:
-        for i in data.sort([("date", -1)]): 
-            #option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>"+"<button type=\"button\" onClick= {{ "+"delPost"+(str(session['user_data']['login'])+"," +str(i["id"])+" }} >"+ "Delete Post" + "</button>")
-    except:
-        return option
-    
-    return option    
+     option = ""
+     try:
+          for i in data.sort([("date", -1)]): 
+               option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>"+"<button type=\"button\" onClick= {{ "+"delPost"+(str(session['user_data']['login'])+"," +str(i["id"])+" }} >"+ "Delete Post" + "</button>")
+     except:
+          return option
+     return option    
     
 def delPost(name = None, id = None):
     if name == session["user_data"]["login"] and not id == None:
