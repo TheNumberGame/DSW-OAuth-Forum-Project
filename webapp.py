@@ -69,8 +69,8 @@ def posts_to_html(data = None):
      option = ""
      try:
           for i in data.sort([("date", -1)]): 
-               option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>"+ "<button type=\"button\" onclick= \{\{ delPost"+(str(session['user_data']['login'])") \}\} > Delete Post</button>")
-               #+ "<button type=\"button\" onClick= \{\{ delPost"+(str(session['user_data']['login'])+ "," + str(i["id"]) + ") \}\} >"+ "Delete Post" + "</button>") + "," + str(i["id"]) + 
+               option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>"+ "<button type=\"button\" onclick= \{\{ delPost("+str(session['user_data']['login'])"," + str(i["id"]) +") \}\} > Delete Post</button>")
+               #+ "<button type=\"button\" onClick= \{\{ delPost"+(str(session['user_data']['login'])+ "," + str(i["id"]) + ") \}\} >"+ "Delete Post" + "</button>") +  
      except:
           return " "
      return option    
