@@ -23,7 +23,7 @@ url = 'mongodb://{}:{}@{}:{}/{}'.format(
         os.environ["MONGO_HOST"],
         os.environ["MONGO_PORT"],
         os.environ["MONGO_DBNAME"])
-,clt = pymongo.MongoClient(url)
+clt = pymongo.MongoClient(url)
 usr = clt[os.environ["MONGO_DBNAME"]]
 collection = usr['forum']
 
@@ -69,7 +69,7 @@ def post():
 def posts_to_html(data = None):
     option = ""
     try:
-        for i in data.sort({"date": -1}): 
+        for i in data.sort({"date", -1}): 
             option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>")
     except Exception as ex:
         return str(ex)
