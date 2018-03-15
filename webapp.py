@@ -69,18 +69,18 @@ def posts_to_html(data = None):
      option = ""
      try:
           for i in data.sort([("date", -1)]): 
-               option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>" + "<button type=\"button\" onClick= \{\{ delPost"+(str(session['user_data']['login'])+ "," + str(i["id"]) + ") \}\} >"+ "Delete Post" + "</button>")
+               option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>" #+ "<button type=\"button\" onClick= \{\{ delPost"+(str(session['user_data']['login'])+ "," + str(i["id"]) + ") \}\} >"+ "Delete Post" + "</button>")
      except:
           return " "
      return option    
     
-def delPost(name = None, id = None):
-    if name == session["user_data"]["login"] and not id == None:
-         collection.deleteOne({'_id': ObjectId(id)})
-    else:
-         return render_template('home.html', past_posts = posts_to_html("Failed to delete."))
+#def delPost(name = None, id = None):
+#    if name == session["user_data"]["login"] and not id == None:
+#         collection.deleteOne({'_id': ObjectId(id)})
+#    else:
+#         return render_template('home.html', past_posts = posts_to_html("Failed to delete."))
 
-    return render_template('home.html', past_posts = posts_to_html(collection.find()))
+#    return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
