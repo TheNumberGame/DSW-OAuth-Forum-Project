@@ -73,7 +73,7 @@ def posts_to_html(data = None):
      except Exception as ex:
           return str(ex)
      print(option)
-     return option    
+     return option + '\n'    
     
 def delPost(name = None, id = None):
     print("Called: "+ str(id))
