@@ -71,8 +71,8 @@ def posts_to_html(data = None):
           for i in data.sort([("date", -1)]):
                temp = "{{ delPost( \"" + str(session['user_data']['login']) + "\",\"" + str(i['_id']) + "\") }}" 
                option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>"+ "<button type=\"button\" onclick= "+ temp +" > Delete Post</button>")
-     except Exception as ex:
-          return str(ex)
+     except:
+          return data
      print(option)
      return option + '\n'    
     
