@@ -69,7 +69,7 @@ def posts_to_html(data = None):
      option = ""
      try:
           for i in data.sort([("date", -1)]):
-               option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>"+ "<button id= \"b1\" type=\"button\" value= \""+ str(i["_id"]) +"\"> Delete Post</button>")
+               option += Markup("<p>" + i["name"] + ": " + i["message"] + "</p>"+ "<button id= \"b1\" value= \""+ str(i["_id"]) +"\"> Delete Post</button>")
      except:
           return data
      #print(option)
