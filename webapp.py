@@ -76,7 +76,7 @@ def posts_to_html(data = None):
      return option    
 
 @app.route('/b')
-def delPost(id = None):
+def delPost():
     id = request.args['id']
     print("Called: "+ str(id))
     if not id == None:
