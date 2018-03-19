@@ -69,16 +69,16 @@ def posts_to_html(data = None):
      option = ""
      try:
           for i in data.sort([("date", -1)]):
-               temp = "\"{{ delPost( \"" + str(session['user_data']['login']) + "\",\"" + str(i['_id']) + "\") }}\"" 
-               option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>"+ "<button type=\"button\" onclick= "+ temp +" > Delete Post</button>")
+               option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>"+ "<button id= \"b1\" type=\"button\" value= \""+ str(i["_id"]) +"\"> Delete Post</button>")
      except:
           return data
      #print(option)
      return option    
-    
-def delPost(name = None, id = None):
+
+@app.route('/b')
+def delPost(id = None):
     print("Called: "+ str(id))
-    if name == session["user_data"]["login"] and not id == None:
+    if not id == None:
          collection.deleteOne({'_id': ObjectId(id)})
     else:
          return render_template('home.html', past_posts = posts_to_html("Failed to delete."))
