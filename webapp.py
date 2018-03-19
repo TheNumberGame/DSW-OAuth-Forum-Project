@@ -73,8 +73,8 @@ def posts_to_html(data = None):
                option += Markup("<p id=\"talk\">" + i["name"] + ": " + i["message"] + "</p>"+ "<button type=\"button\" onclick= "+ temp +" > Delete Post</button>")
      except:
           return data
-     print(option)
-     return option + '\n'    
+     #print(option)
+     return option    
     
 def delPost(name = None, id = None):
     print("Called: "+ str(id))
