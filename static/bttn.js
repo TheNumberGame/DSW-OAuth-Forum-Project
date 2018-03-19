@@ -1,5 +1,5 @@
 $(document).ready( function(){
-  $("button").onclick( function(){
+  $("button").click( function(){
     $.post("/b",{"id": $(this).val()})
   });
 });
