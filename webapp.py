@@ -77,6 +77,7 @@ def posts_to_html(data = None):
 
 @app.route('/b')
 def delPost(id = None):
+    id = request.args['id']
     print("Called: "+ str(id))
     if not id == None:
          collection.deleteOne({'_id': ObjectId(id)})
