@@ -79,11 +79,9 @@ def posts_to_html(data = None):
 def delPost():
     id = request.form['id']
     print("Called: "+ str(id))
-    if not id == None:
-         collection.delete_one({'_id': id})
-    else:
-         return render_template('home.html', past_posts = posts_to_html("Failed to delete."))
-
+    
+    collection.delete_one({'_id': id})
+   
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
 #redirect to GitHub's OAuth page and confirm callback URL
