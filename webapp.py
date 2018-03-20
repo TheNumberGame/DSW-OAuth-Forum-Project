@@ -80,7 +80,7 @@ def delPost():
     id = request.form['id']
     print("Called: "+ str(id))
     
-    collection.delete_one({'_id': {"$oid": id}})
+    collection.delete_one({'_id': {"\$oid": id}})
    
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
