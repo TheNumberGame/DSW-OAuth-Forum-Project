@@ -77,10 +77,10 @@ def posts_to_html(data = None):
 
 @app.route('/b', methods=['POST'])
 def delPost():
-    id = request.form['id']
-    print("Called: "+ str(id))
+    docId = request.form['id']
+    print("Called: "+ str(docIid))
     
-    collection.delete_one({'_id': {"\$oid": id}})
+    collection.delete_one({'_id': {"\$oid": docId}})
    
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
