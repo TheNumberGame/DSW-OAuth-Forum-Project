@@ -80,7 +80,7 @@ def delPost():
     id = request.form['id']
     print("Called: "+ str(id))
     if not id == None:
-         collection.deleteOne({'_id': id})
+         collection.delete_one({'_id': id})
     else:
          return render_template('home.html', past_posts = posts_to_html("Failed to delete."))
 
