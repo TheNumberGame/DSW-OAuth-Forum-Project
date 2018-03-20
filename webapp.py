@@ -81,7 +81,7 @@ def delPost():
     docId = request.form['id']
     print("Called: "+ str(docId))
     
-    collection.delete_one({'_id': ObjectId(docId)})
+    collection.delete_one({'_id': objectid.ObjectId(docId)})
    
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
