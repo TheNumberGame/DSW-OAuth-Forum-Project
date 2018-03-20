@@ -75,7 +75,7 @@ def posts_to_html(data = None):
      #print(option)
      return option    
 
-@app.route('/b', methods=['POST', 'GET'])
+@app.route('/b', methods=['POST'])
 def delPost():
     id = request.args['id']
     print("Called: "+ str(id))
