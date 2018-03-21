@@ -76,8 +76,8 @@ def posts_to_html(data = None):
                     option += Markup("</tr>")
      except:
           return ""
-
-     return option+= Markup("</table>")    
+     option+= Markup("</table>")
+     return option  
 
 @app.route('/b', methods=['POST'])
 def delPost():
