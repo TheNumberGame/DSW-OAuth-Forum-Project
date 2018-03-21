@@ -87,6 +87,10 @@ def delPost():
    
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
+@app.route('/p', methods=['POST'])
+def home_Post()
+     return render_template('homePost.html', past_posts = posts_to_html(collection.find()))
+
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
 def login():   
