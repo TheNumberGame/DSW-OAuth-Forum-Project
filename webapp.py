@@ -84,7 +84,7 @@ def delPost():
     
     collection.delete_one({'_id': objectid.ObjectId(docId)})
    
-    home()
+    return home()
 
 @app.route('/p', methods=['POST'])
 def home_Post():
