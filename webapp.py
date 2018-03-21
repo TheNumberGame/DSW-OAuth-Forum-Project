@@ -73,8 +73,8 @@ def posts_to_html(data = None):
                if i['name'] == session['user_data']['login']:
                     option += Markup("<button value= \""+ str(i["_id"]) +"\"> Delete Post</button>")
      except:
-          return data
-     #print(option)
+          return ""
+
      return option    
 
 @app.route('/b', methods=['POST'])
