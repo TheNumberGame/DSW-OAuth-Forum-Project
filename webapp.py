@@ -13,7 +13,7 @@ from bson import objectid
 
 app = Flask(__name__)
 
-app.debug = False #Change this to False for production
+app.debug = True #Change this to False for production
 
 app.secret_key = os.environ['SECRET_KEY'] #used to sign session cookies
 oauth = OAuth(app)
@@ -84,7 +84,7 @@ def delPost():
     
     collection.delete_one({'_id': objectid.ObjectId(docId)})
    
-    return render_template('home.html', past_posts = posts_to_html(collection.find()))
+    home()
 
 @app.route('/p', methods=['POST'])
 def home_Post():
