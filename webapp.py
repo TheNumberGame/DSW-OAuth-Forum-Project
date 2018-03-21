@@ -49,7 +49,6 @@ def inject_logged_in():
 
 @app.route('/')
 def home():
-    #print("Collection find: " + str(collection.find()))
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
 @app.route('/posted', methods=['POST'])
@@ -64,7 +63,7 @@ def post():
     
     collection.insert(data)
     
-    return render_template('home.html', past_posts = posts_to_html(collection.find()))
+    return redirect(url_for("home"))
 
 def posts_to_html(data = None):
      option = ""
@@ -84,7 +83,7 @@ def delPost():
     
     collection.delete_one({'_id': objectid.ObjectId(docId)})
    
-    return home()
+    return redirect(url_for("home"))
 
 #redirect to GitHub's OAuth page and confirm callback URL
 @app.route('/login')
