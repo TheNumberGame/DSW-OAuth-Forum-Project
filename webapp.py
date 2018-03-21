@@ -81,7 +81,6 @@ def posts_to_html(data = None):
 @app.route('/b', methods=['POST'])
 def delPost():
     docId = request.form['id']
-    print("Called: "+ str(docId))
     
     collection.delete_one({'_id': objectid.ObjectId(docId)})
    
