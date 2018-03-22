@@ -66,17 +66,17 @@ def post():
     return redirect(url_for("home"))
 
 def posts_to_html(data = None):
-     option = Markup("<table>")
+     option = Markup("<div>")
      try:
           for i in data.sort([("date", -1)]):
-               option += Markup("<tr><td><p>" + i["name"] + ": " + i["message"] + "</p></td>") 
+               option += Markup("<p>" + i["name"] + ": " + i["message"] + "</p>") 
                if i['name'] == session['user_data']['login']:
-                    option += Markup("<br><td><button value= \""+ str(i["_id"]) +"\"> Delete Post</button></tr></td>")
+                    option += Markup("<br><button value= \""+ str(i["_id"]) +"\"> Delete Post</button>")
                else:
                     option += Markup("</tr>")
      except:
           return ""
-     option+= Markup("</table>")
+     option+= Markup("</div>")
      return option  
 
 @app.route('/b', methods=['POST'])
