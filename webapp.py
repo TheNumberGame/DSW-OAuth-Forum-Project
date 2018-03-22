@@ -69,11 +69,9 @@ def posts_to_html(data = None):
      option = ""
      try:
           for i in data.sort([("date", -1)]):
-               option += Markup("<div class=\"mes\"><p>" + i["name"] + ": " + i["message"] + "</p>") 
+               option += Markup("<p>" + i["name"] + ": " + i["message"] + "</p>") 
                if i['name'] == session['user_data']['login']:
-                    option += Markup("<br><button value= \""+ str(i["_id"]) +"\"> Delete Post</button></div>")
-               else:
-                    option += Markup("</div>")
+                    option += Markup("<br><button value= \""+ str(i["_id"]) +"\"> Delete Post</button>")
      except Exception as ex:
           return str(ex)
    
