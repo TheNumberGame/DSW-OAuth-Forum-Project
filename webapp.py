@@ -71,12 +71,12 @@ def posts_to_html(data = None):
           for i in data.sort([("date", -1)]):
                option += Markup("<p>" + i["name"] + ": " + i["message"] + "</p>") 
                if i['name'] == session['user_data']['login']:
-                    option += Markup("<br><button value= \""+ str(i["_id"]) +"\"> Delete Post</button>")
+                    option += Markup("<br><button value= \""+ str(i["_id"]) +"\"> Delete Post</button></div>")
                else:
-                    option += Markup("</tr>")
+                    option += Markup("</div>")
      except:
           return ""
-     option+= Markup("</div>")
+   
      return option  
 
 @app.route('/b', methods=['POST'])
