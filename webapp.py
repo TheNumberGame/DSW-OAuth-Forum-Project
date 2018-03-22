@@ -76,8 +76,8 @@ def posts_to_html(data = None):
                     else:
                          option += Markup("</p>")
                     print(i["replies"])
-     except:
-          return data
+     except Exection as ex:
+          return str(ex)
    
      return option
 
