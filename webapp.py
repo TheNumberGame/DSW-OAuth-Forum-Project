@@ -66,7 +66,7 @@ def post():
     return redirect(url_for("home"))
 
 def posts_to_html(data = None):
-     option = Markup("<div>")
+     option = Markup("<div id=\"mes\">")
      try:
           for i in data.sort([("date", -1)]):
                option += Markup("<p>" + i["name"] + ": " + i["message"] + "</p>") 
