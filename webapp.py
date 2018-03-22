@@ -71,7 +71,7 @@ def posts_to_html(data = None):
           for i in data.sort([("date", -1)]):
                option += Markup("<p>" + i["name"] + ": " + i["message"] + "</p>") 
                if i['name'] == session['user_data']['login']:
-                    option += Markup("<br><input type=\"submit\" name=\"Delete Post\" value= \""+ str(i["_id"]) +"\">")
+                    option += Markup("<br><input type=\"hidden\" name=\"DeletePost\" value= \""+ str(i["_id"]) +"\">")
      except Exception as ex:
           return str(ex)
    
@@ -79,7 +79,7 @@ def posts_to_html(data = None):
 
 @app.route('/b', methods=['POST'])
 def delPost():
-    docId = request.form['id']
+    docId = request.form['DeletePost']
     
     collection.delete_one({'_id': objectid.ObjectId(docId)})
    
