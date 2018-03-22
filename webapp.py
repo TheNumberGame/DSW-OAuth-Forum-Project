@@ -57,7 +57,7 @@ def post():
     #Every post should include the username of the poster and text of the post.    
 
     if not request.form['message'] == "" and not request.form['message'].isspace():
-        data = { "name": session['user_data']['login'], "message": request.form['message'], "date": str(datetime.now())}
+        data = { "name": session['user_data']['login'], "message": request.form['message'], "date": str(datetime.now()), "is_reply": 0}
     else:
         return render_template('home.html', past_posts = posts_to_html(['Invalid']))
     
@@ -69,15 +69,23 @@ def posts_to_html(data = None):
      option = ""
      try:
           for i in data.sort([("date", -1)]):
-               option += Markup("<p><span style=\"color:blue;\">" + i["name"] + "</span>: " + i["message"]) 
-               if i['name'] == session['user_data']['login']:
-                    option += Markup("<br><button type=\"submit\" name=\"DeletePost\" value= \""+ str(i["_id"]) +"\">Delete Post</button></p>")
-               else:
-                    option += Markup("</p>")
+               if i["is_reply"] == 0:
+                    option += Markup("<p><span style=\"color:blue;\">" + i["name"] + "</span>: " + i["message"]) 
+                    if i['name'] == session['user_data']['login']:
+                         option += Markup("<br><button type=\"submit\" name=\"DeletePost\" value= \""+ str(i["_id"]) +"\">Delete Post</button></p>")
+                    else:
+                         option += Markup("</p>")
+                    if i[""]
      except:
           return data
    
-     return option  
+     return option
+
+def is_reply(post_id = none)
+     data = { "name": session['user_data']['login'], "message": request.form['message'], "date": str(datetime.now()), "is_reply": 1, "reply_to": str(post_id)}
+     collection.insert(data)
+     collection.update_one({"_id": objectid.ObjectId(post_id)}, {"replies": collection.find({"reply_to": objectid.ObjectId(post_id)})["_id"]})
+     return redirect(url_for("home"))
 
 @app.route('/b', methods=['POST'])
 def delPost():
