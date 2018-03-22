@@ -75,7 +75,7 @@ def posts_to_html(data = None):
                          option += Markup("<br><button type=\"submit\" name=\"DeletePost\" value= \""+ str(i["_id"]) +"\">Delete Post</button></p>")
                     else:
                          option += Markup("</p>")
-                    if i[""]
+                    print(i["replies"])
      except:
           return data
    
