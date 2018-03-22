@@ -81,7 +81,7 @@ def posts_to_html(data = None):
    
      return option
 
-def is_reply(post_id = none)
+def is_reply(post_id = None):
      data = { "name": session['user_data']['login'], "message": request.form['message'], "date": str(datetime.now()), "is_reply": 1, "reply_to": str(post_id)}
      collection.insert(data)
      collection.update_one({"_id": objectid.ObjectId(post_id)}, {"replies": collection.find({"reply_to": objectid.ObjectId(post_id)})["_id"]})
