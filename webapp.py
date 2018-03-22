@@ -72,8 +72,8 @@ def posts_to_html(data = None):
                option += Markup("<p>" + i["name"] + ": " + i["message"] + "</p>") 
                if i['name'] == session['user_data']['login']:
                     option += Markup("<br><button type=\"submit\" name=\"DeletePost\" value= \""+ str(i["_id"]) +"\">Delete Post</button>")
-     except Exception as ex:
-          return str(ex)
+     except:
+          return data
    
      return option  
 
