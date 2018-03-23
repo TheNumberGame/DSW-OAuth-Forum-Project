@@ -74,8 +74,8 @@ def posts_to_html(data = None):
                     option += Markup("<br><button type=\"submit\" name=\"DeletePost\" value= \""+ str(i["_id"]) +"\">Delete Post</button>  <span style=\"color:green;\">Date Posted</span>: "+ str(i["date"]) +"</p>")
                else:
                     option += Markup("<br><span style=\"color:green;\">Date Posted</span>: "+ str(i["date"]) +"</p>")
-     except:
-          return data
+     except Exception as ex:
+          return str(ex)
    
      return option
 
