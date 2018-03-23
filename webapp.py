@@ -49,6 +49,10 @@ def inject_logged_in():
 
 @app.route('/')
 def home():
+    try:
+         i["user_data"]
+    except:
+         i["user_data"]["login"] = None
     return render_template('home.html', past_posts = posts_to_html(collection.find()))
 
 @app.route('/posted', methods=['POST'])
