@@ -68,14 +68,22 @@ def post():
 def posts_to_html(data = None):
      option = ""
      try:
-          for i in data.sort([("date", -1)]):
-               option += Markup("<p class=\"mes\" ><span style=\"color:blue;\">" + i["name"] + "</span>: " + i["message"]) 
-               if i['name'] == session['user_data']['login']:
-                    option += Markup("<br><button type=\"submit\" name=\"DeletePost\" value= \""+ str(i["_id"]) +"\">Delete Post</button>  <span style=\"color:green;\">Date Posted</span>: "+ str(i["date"]) +"</p>")
-               else:
-                    option += Markup("<br><span style=\"color:green;\">Date Posted</span>: "+ str(i["date"]) +"</p>")
-     except Exception as ex:
-          return str(ex)
+          session['user_data']
+          try:
+               for i in data.sort([("date", -1)]):
+                    option += Markup("<p class=\"mes\" ><span style=\"color:blue;\">" + i["name"] + "</span>: " + i["message"]) 
+                    if i['name'] == session['user_data']['login']:
+                         option += Markup("<br><button type=\"submit\" name=\"DeletePost\" value= \""+ str(i["_id"]) +"\">Delete Post</button>  <span style=\"color:green;\">Date Posted</span>: "+ str(i["date"]) +"</p>")
+                    else:
+                         option += Markup("<br><span style=\"color:green;\">Date Posted</span>: "+ str(i["date"]) +"</p>")
+          except:
+               return data
+     except:
+          try:
+               for i in data.sort([("date", -1)]):
+                    option += Markup("<p class=\"mes\" ><span style=\"color:blue;\">" + i["name"] + "</span>: " + i["message"]+"<br><span style=\"color:green;\">Date Posted</span>: "+ str(i["date"]) +"</p>") 
+          except:
+               return data
    
      return option
 
