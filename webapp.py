@@ -57,7 +57,7 @@ def post():
     #Every post should include the username of the poster and text of the post.    
     #need escape()
     if not request.form['message'] == "" and not request.form['message'].isspace():
-        data = { "name": session['user_data']['login'], "message": request.form['message'], "date": str(datetime.now())}
+        data = { "name": session['user_data']['login'], "message": escape(request.form['message']), "date": str(datetime.now())}
     else:
         return render_template('home.html', past_posts = posts_to_html(['Invalid']))
     
